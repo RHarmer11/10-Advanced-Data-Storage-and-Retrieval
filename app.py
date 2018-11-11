@@ -120,11 +120,11 @@ def calc_temps(start_date):
 
     return jsonify(temps2)
     
-    return jsonify({"error": f"That start date {start_date} not found."}), 404  
+    
  
 # /api/v1.0/<start>/<end>
 @app.route("/api/v1.0/<start_date>/<end_date>")
-def calc_temps_end(start_date=None, end_date=None):
+def calc_temps_end(start_date, end_date):
 
     start = dt.datetime.strptime(start_date, '%Y-%m-%d')
     end = dt.datetime.strptime(end_date, '%Y-%m-%d')    
@@ -137,7 +137,7 @@ def calc_temps_end(start_date=None, end_date=None):
 
     return jsonify(temps_end)
 
-    return jsonify({"error": f"Those dates {start_date}, {end_date} not found."}), 404 
+     
 
 
 # Return a JSON list of the minimum temperature, the average temperature, and the max temperature for a given start or start-end range.
